@@ -41,7 +41,10 @@ func Open(filename string) (*Reader, error) {
 		return nil, err
 	}
 
-	return NewReader(file), nil
+	rdr := NewReader(file)
+	rdr.deferUntilClose(file.Close)
+
+	return rdr, nil
 }
 
 // NewReader wraps an existing io.Reader for reading proio Events.  Either Open
@@ -61,15 +64,19 @@ func NewReader(streamReader io.Reader) *Reader {
 // Close closes any file that was opened by the library, and stops any
 // unfinished scans.  Close does not close io.Readers passed directly to
 // NewReader.
-func (rdr *Reader) Close() {
+func (rdr *Reader) Close() error {
 	rdr.Lock()
 	defer rdr.Unlock()
 
 	rdr.StopScan()
-	closer, ok := rdr.streamReader.(io.Closer)
-	if ok {
-		closer.Close()
+	for _, thisFunc := range rdr.deferredUntilClose {
+		if err := thisFunc(); err != nil {
+			return err
+		}
 	}
+	rdr.deferredUntilClose = make([]func() error, 0)
+
+	return nil
 }
 
 // Next retrieves the next event from the stream.
