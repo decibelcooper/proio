@@ -1,9 +1,7 @@
 package proio
 
 import (
-	"fmt"
 	"io"
-	"reflect"
 
 	"go-hep.org/x/hep/fwk"
 )
@@ -19,14 +17,8 @@ type InputStream struct {
 // Connect establishes output ports (returning an error for the wrong type),
 // and sets up a Reader with R (io.Reader) as the raw input.
 func (stream *InputStream) Connect(ports []fwk.Port) error {
-	eventType := reflect.TypeOf(&Event{})
 	for _, port := range ports {
-		switch port.Type {
-		case eventType:
-			stream.outputs = append(stream.outputs, port.Name)
-		default:
-			return fmt.Errorf("Invalid port type: %v", port.Type)
-		}
+		stream.outputs = append(stream.outputs, port.Name)
 	}
 
 	stream.rdr = NewReader(stream.R)

@@ -23,7 +23,7 @@ func TestInputStream1(t *testing.T) {
 	wrt.Close()
 
 	app := job.New(job.P{
-		"EvtMax":   int64(4),
+		"EvtMax":   int64(5),
 		"NProcs":   2,
 		"MsgLevel": job.MsgLevel("ERROR"),
 	})
@@ -45,6 +45,10 @@ func TestInputStream1(t *testing.T) {
 				{
 					Name: "toprint",
 					Type: reflect.TypeOf(&Event{}),
+				},
+				{
+					Name: "badport",
+					Type: reflect.TypeOf(0),
 				},
 			},
 			"Streamer": &InputStream{R: buffer},
