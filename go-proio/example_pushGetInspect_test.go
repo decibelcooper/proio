@@ -16,15 +16,12 @@ func Example_pushGetInspect() {
 
 	// Create entries and hold onto their IDs for referencing
 
-	parentPDG := int32(443)
-	parent := &eic.Particle{Pdg: &parentPDG}
+	parent := &eic.Particle{Pdg: 443}
 	parentID := eventOut.AddEntry("Particle", parent)
 	eventOut.TagEntry(parentID, "MC", "Primary")
 
-	child1PDG := int32(11)
-	child1 := &eic.Particle{Pdg: &child1PDG}
-	child2PDG := int32(-11)
-	child2 := &eic.Particle{Pdg: &child2PDG}
+	child1 := &eic.Particle{Pdg: 11}
+	child2 := &eic.Particle{Pdg: -11}
 	childIDs := eventOut.AddEntries("Particle", child1, child2)
 	for _, id := range childIDs {
 		eventOut.TagEntry(id, "MC", "GenStable")
