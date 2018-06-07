@@ -4,12 +4,12 @@
 #include <stdio.h>
 #include <iostream>
 
-#include "eic.pb.h"
+#include "eicproto2.pb.h"
 #include "event.h"
 #include "reader.h"
 #include "writer.h"
 
-namespace model = proio::model::eic;
+namespace model = proio::model::eicproto2;
 
 void unsetValue1() {
     char filename[] = "unsetvalue1.XXXXXX";

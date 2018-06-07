@@ -12,13 +12,11 @@ func Example_skip() {
 	buffer := &bytes.Buffer{}
 	writer := proio.NewWriter(buffer)
 
-	pdg := int32(443)
 	for i := 0; i < 5; i++ {
 		event := proio.NewEvent()
-		charge := float32(i + 1)
 		p := &eic.Particle{
-			Pdg:    &pdg,
-			Charge: &charge,
+			Pdg:    443,
+			Charge: float32(i + 1),
 		}
 		event.AddEntry("Particle", p)
 		writer.Push(event)
