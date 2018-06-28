@@ -115,42 +115,64 @@ public final class Eic {
      * momentum in GeV
      * </pre>
      *
-     * <code>optional .proio.model.eic.XYZD p = 5;</code>
+     * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
+     */
+    boolean hasPDouble();
+    /**
+     * <pre>
+     * momentum in GeV
+     * </pre>
+     *
+     * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
+     */
+    proio.model.Eic.XYZD getPDouble();
+    /**
+     * <pre>
+     * momentum in GeV
+     * </pre>
+     *
+     * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
+     */
+    proio.model.Eic.XYZDOrBuilder getPDoubleOrBuilder();
+
+    /**
+     * <code>optional .proio.model.eic.XYZF p = 9;</code>
      */
     boolean hasP();
     /**
-     * <pre>
-     * momentum in GeV
-     * </pre>
-     *
-     * <code>optional .proio.model.eic.XYZD p = 5;</code>
+     * <code>optional .proio.model.eic.XYZF p = 9;</code>
      */
-    proio.model.Eic.XYZD getP();
+    proio.model.Eic.XYZF getP();
     /**
-     * <pre>
-     * momentum in GeV
-     * </pre>
-     *
-     * <code>optional .proio.model.eic.XYZD p = 5;</code>
+     * <code>optional .proio.model.eic.XYZF p = 9;</code>
      */
-    proio.model.Eic.XYZDOrBuilder getPOrBuilder();
+    proio.model.Eic.XYZFOrBuilder getPOrBuilder();
 
     /**
      * <pre>
      * mass in GeV
      * </pre>
      *
-     * <code>optional double mass = 6;</code>
+     * <code>optional double mass_double = 6;</code>
      */
-    boolean hasMass();
+    boolean hasMassDouble();
     /**
      * <pre>
      * mass in GeV
      * </pre>
      *
-     * <code>optional double mass = 6;</code>
+     * <code>optional double mass_double = 6;</code>
      */
-    double getMass();
+    double getMassDouble();
+
+    /**
+     * <code>optional float mass = 10;</code>
+     */
+    boolean hasMass();
+    /**
+     * <code>optional float mass = 10;</code>
+     */
+    float getMass();
 
     /**
      * <pre>
@@ -198,7 +220,8 @@ public final class Eic {
       parent_ = java.util.Collections.emptyList();
       child_ = java.util.Collections.emptyList();
       pdg_ = 0;
-      mass_ = 0D;
+      massDouble_ = 0D;
+      mass_ = 0F;
       charge_ = 0F;
     }
 
@@ -226,6 +249,13 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 8: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
                 parent_ = new java.util.ArrayList<java.lang.Long>();
@@ -289,29 +319,29 @@ public final class Eic {
             case 42: {
               proio.model.Eic.XYZD.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = p_.toBuilder();
+                subBuilder = pDouble_.toBuilder();
               }
-              p_ = input.readMessage(proio.model.Eic.XYZD.PARSER, extensionRegistry);
+              pDouble_ = input.readMessage(proio.model.Eic.XYZD.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(p_);
-                p_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(pDouble_);
+                pDouble_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000004;
               break;
             }
             case 49: {
-              bitField0_ |= 0x00000008;
-              mass_ = input.readDouble();
+              bitField0_ |= 0x00000010;
+              massDouble_ = input.readDouble();
               break;
             }
             case 61: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000040;
               charge_ = input.readFloat();
               break;
             }
             case 66: {
               proio.model.Eic.XYZF.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
                 subBuilder = spin_.toBuilder();
               }
               spin_ = input.readMessage(proio.model.Eic.XYZF.PARSER, extensionRegistry);
@@ -319,14 +349,25 @@ public final class Eic {
                 subBuilder.mergeFrom(spin_);
                 spin_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000080;
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 74: {
+              proio.model.Eic.XYZF.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = p_.toBuilder();
               }
+              p_ = input.readMessage(proio.model.Eic.XYZF.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(p_);
+                p_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+            case 85: {
+              bitField0_ |= 0x00000020;
+              mass_ = input.readFloat();
               break;
             }
           }
@@ -352,7 +393,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_Particle_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_Particle_fieldAccessorTable
@@ -485,16 +525,16 @@ public final class Eic {
       return vertex_ == null ? proio.model.Eic.XYZTD.getDefaultInstance() : vertex_;
     }
 
-    public static final int P_FIELD_NUMBER = 5;
-    private proio.model.Eic.XYZD p_;
+    public static final int P_DOUBLE_FIELD_NUMBER = 5;
+    private proio.model.Eic.XYZD pDouble_;
     /**
      * <pre>
      * momentum in GeV
      * </pre>
      *
-     * <code>optional .proio.model.eic.XYZD p = 5;</code>
+     * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
      */
-    public boolean hasP() {
+    public boolean hasPDouble() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
@@ -502,42 +542,78 @@ public final class Eic {
      * momentum in GeV
      * </pre>
      *
-     * <code>optional .proio.model.eic.XYZD p = 5;</code>
+     * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
      */
-    public proio.model.Eic.XYZD getP() {
-      return p_ == null ? proio.model.Eic.XYZD.getDefaultInstance() : p_;
+    public proio.model.Eic.XYZD getPDouble() {
+      return pDouble_ == null ? proio.model.Eic.XYZD.getDefaultInstance() : pDouble_;
     }
     /**
      * <pre>
      * momentum in GeV
      * </pre>
      *
-     * <code>optional .proio.model.eic.XYZD p = 5;</code>
+     * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
      */
-    public proio.model.Eic.XYZDOrBuilder getPOrBuilder() {
-      return p_ == null ? proio.model.Eic.XYZD.getDefaultInstance() : p_;
+    public proio.model.Eic.XYZDOrBuilder getPDoubleOrBuilder() {
+      return pDouble_ == null ? proio.model.Eic.XYZD.getDefaultInstance() : pDouble_;
     }
 
-    public static final int MASS_FIELD_NUMBER = 6;
-    private double mass_;
+    public static final int P_FIELD_NUMBER = 9;
+    private proio.model.Eic.XYZF p_;
     /**
-     * <pre>
-     * mass in GeV
-     * </pre>
-     *
-     * <code>optional double mass = 6;</code>
+     * <code>optional .proio.model.eic.XYZF p = 9;</code>
      */
-    public boolean hasMass() {
+    public boolean hasP() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
+     * <code>optional .proio.model.eic.XYZF p = 9;</code>
+     */
+    public proio.model.Eic.XYZF getP() {
+      return p_ == null ? proio.model.Eic.XYZF.getDefaultInstance() : p_;
+    }
+    /**
+     * <code>optional .proio.model.eic.XYZF p = 9;</code>
+     */
+    public proio.model.Eic.XYZFOrBuilder getPOrBuilder() {
+      return p_ == null ? proio.model.Eic.XYZF.getDefaultInstance() : p_;
+    }
+
+    public static final int MASS_DOUBLE_FIELD_NUMBER = 6;
+    private double massDouble_;
+    /**
      * <pre>
      * mass in GeV
      * </pre>
      *
-     * <code>optional double mass = 6;</code>
+     * <code>optional double mass_double = 6;</code>
      */
-    public double getMass() {
+    public boolean hasMassDouble() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <pre>
+     * mass in GeV
+     * </pre>
+     *
+     * <code>optional double mass_double = 6;</code>
+     */
+    public double getMassDouble() {
+      return massDouble_;
+    }
+
+    public static final int MASS_FIELD_NUMBER = 10;
+    private float mass_;
+    /**
+     * <code>optional float mass = 10;</code>
+     */
+    public boolean hasMass() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional float mass = 10;</code>
+     */
+    public float getMass() {
       return mass_;
     }
 
@@ -551,7 +627,7 @@ public final class Eic {
      * <code>optional float charge = 7;</code>
      */
     public boolean hasCharge() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <pre>
@@ -570,7 +646,7 @@ public final class Eic {
      * <code>optional .proio.model.eic.XYZF spin = 8;</code>
      */
     public boolean hasSpin() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional .proio.model.eic.XYZF spin = 8;</code>
@@ -586,7 +662,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -596,7 +671,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < parent_.size(); i++) {
@@ -612,21 +686,26 @@ public final class Eic {
         output.writeMessage(4, getVertex());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(5, getP());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeDouble(6, mass_);
+        output.writeMessage(5, getPDouble());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeDouble(6, massDouble_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeFloat(7, charge_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeMessage(8, getSpin());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(9, getP());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeFloat(10, mass_);
       }
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -660,19 +739,27 @@ public final class Eic {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getP());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(6, mass_);
+          .computeMessageSize(5, getPDouble());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(6, massDouble_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(7, charge_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getSpin());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getP());
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, getSpin());
+          .computeFloatSize(10, mass_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -704,16 +791,28 @@ public final class Eic {
         result = result && getVertex()
             .equals(other.getVertex());
       }
+      result = result && (hasPDouble() == other.hasPDouble());
+      if (hasPDouble()) {
+        result = result && getPDouble()
+            .equals(other.getPDouble());
+      }
       result = result && (hasP() == other.hasP());
       if (hasP()) {
         result = result && getP()
             .equals(other.getP());
       }
+      result = result && (hasMassDouble() == other.hasMassDouble());
+      if (hasMassDouble()) {
+        result = result && (
+            java.lang.Double.doubleToLongBits(getMassDouble())
+            == java.lang.Double.doubleToLongBits(
+                other.getMassDouble()));
+      }
       result = result && (hasMass() == other.hasMass());
       if (hasMass()) {
         result = result && (
-            java.lang.Double.doubleToLongBits(getMass())
-            == java.lang.Double.doubleToLongBits(
+            java.lang.Float.floatToIntBits(getMass())
+            == java.lang.Float.floatToIntBits(
                 other.getMass()));
       }
       result = result && (hasCharge() == other.hasCharge());
@@ -755,14 +854,23 @@ public final class Eic {
         hash = (37 * hash) + VERTEX_FIELD_NUMBER;
         hash = (53 * hash) + getVertex().hashCode();
       }
+      if (hasPDouble()) {
+        hash = (37 * hash) + P_DOUBLE_FIELD_NUMBER;
+        hash = (53 * hash) + getPDouble().hashCode();
+      }
       if (hasP()) {
         hash = (37 * hash) + P_FIELD_NUMBER;
         hash = (53 * hash) + getP().hashCode();
       }
+      if (hasMassDouble()) {
+        hash = (37 * hash) + MASS_DOUBLE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getMassDouble()));
+      }
       if (hasMass()) {
         hash = (37 * hash) + MASS_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            java.lang.Double.doubleToLongBits(getMass()));
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getMass());
       }
       if (hasCharge()) {
         hash = (37 * hash) + CHARGE_FIELD_NUMBER;
@@ -848,7 +956,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -856,7 +963,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.Particle prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -880,7 +986,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_Particle_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_Particle_fieldAccessorTable
@@ -902,11 +1007,11 @@ public final class Eic {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getVertexFieldBuilder();
+          getPDoubleFieldBuilder();
           getPFieldBuilder();
           getSpinFieldBuilder();
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         parent_ = java.util.Collections.emptyList();
@@ -921,37 +1026,42 @@ public final class Eic {
           vertexBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000008);
+        if (pDoubleBuilder_ == null) {
+          pDouble_ = null;
+        } else {
+          pDoubleBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
         if (pBuilder_ == null) {
           p_ = null;
         } else {
           pBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
-        mass_ = 0D;
         bitField0_ = (bitField0_ & ~0x00000020);
-        charge_ = 0F;
+        massDouble_ = 0D;
         bitField0_ = (bitField0_ & ~0x00000040);
+        mass_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        charge_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000100);
         if (spinBuilder_ == null) {
           spin_ = null;
         } else {
           spinBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_Particle_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.Particle getDefaultInstanceForType() {
         return proio.model.Eic.Particle.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.Particle build() {
         proio.model.Eic.Particle result = buildPartial();
         if (!result.isInitialized()) {
@@ -960,7 +1070,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.Particle buildPartial() {
         proio.model.Eic.Particle result = new proio.model.Eic.Particle(this);
         int from_bitField0_ = bitField0_;
@@ -990,21 +1099,33 @@ public final class Eic {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000004;
         }
+        if (pDoubleBuilder_ == null) {
+          result.pDouble_ = pDouble_;
+        } else {
+          result.pDouble_ = pDoubleBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000008;
+        }
         if (pBuilder_ == null) {
           result.p_ = p_;
         } else {
           result.p_ = pBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.mass_ = mass_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.charge_ = charge_;
+        result.massDouble_ = massDouble_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000020;
+        }
+        result.mass_ = mass_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.charge_ = charge_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000080;
         }
         if (spinBuilder_ == null) {
           result.spin_ = spin_;
@@ -1016,39 +1137,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.Particle) {
           return mergeFrom((proio.model.Eic.Particle)other);
@@ -1086,8 +1200,14 @@ public final class Eic {
         if (other.hasVertex()) {
           mergeVertex(other.getVertex());
         }
+        if (other.hasPDouble()) {
+          mergePDouble(other.getPDouble());
+        }
         if (other.hasP()) {
           mergeP(other.getP());
+        }
+        if (other.hasMassDouble()) {
+          setMassDouble(other.getMassDouble());
         }
         if (other.hasMass()) {
           setMass(other.getMass());
@@ -1103,12 +1223,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1518,17 +1636,17 @@ public final class Eic {
         return vertexBuilder_;
       }
 
-      private proio.model.Eic.XYZD p_ = null;
+      private proio.model.Eic.XYZD pDouble_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          proio.model.Eic.XYZD, proio.model.Eic.XYZD.Builder, proio.model.Eic.XYZDOrBuilder> pBuilder_;
+          proio.model.Eic.XYZD, proio.model.Eic.XYZD.Builder, proio.model.Eic.XYZDOrBuilder> pDoubleBuilder_;
       /**
        * <pre>
        * momentum in GeV
        * </pre>
        *
-       * <code>optional .proio.model.eic.XYZD p = 5;</code>
+       * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
        */
-      public boolean hasP() {
+      public boolean hasPDouble() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
@@ -1536,13 +1654,13 @@ public final class Eic {
        * momentum in GeV
        * </pre>
        *
-       * <code>optional .proio.model.eic.XYZD p = 5;</code>
+       * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
        */
-      public proio.model.Eic.XYZD getP() {
-        if (pBuilder_ == null) {
-          return p_ == null ? proio.model.Eic.XYZD.getDefaultInstance() : p_;
+      public proio.model.Eic.XYZD getPDouble() {
+        if (pDoubleBuilder_ == null) {
+          return pDouble_ == null ? proio.model.Eic.XYZD.getDefaultInstance() : pDouble_;
         } else {
-          return pBuilder_.getMessage();
+          return pDoubleBuilder_.getMessage();
         }
       }
       /**
@@ -1550,17 +1668,17 @@ public final class Eic {
        * momentum in GeV
        * </pre>
        *
-       * <code>optional .proio.model.eic.XYZD p = 5;</code>
+       * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
        */
-      public Builder setP(proio.model.Eic.XYZD value) {
-        if (pBuilder_ == null) {
+      public Builder setPDouble(proio.model.Eic.XYZD value) {
+        if (pDoubleBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          p_ = value;
+          pDouble_ = value;
           onChanged();
         } else {
-          pBuilder_.setMessage(value);
+          pDoubleBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000010;
         return this;
@@ -1570,15 +1688,15 @@ public final class Eic {
        * momentum in GeV
        * </pre>
        *
-       * <code>optional .proio.model.eic.XYZD p = 5;</code>
+       * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
        */
-      public Builder setP(
+      public Builder setPDouble(
           proio.model.Eic.XYZD.Builder builderForValue) {
-        if (pBuilder_ == null) {
-          p_ = builderForValue.build();
+        if (pDoubleBuilder_ == null) {
+          pDouble_ = builderForValue.build();
           onChanged();
         } else {
-          pBuilder_.setMessage(builderForValue.build());
+          pDoubleBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000010;
         return this;
@@ -1588,21 +1706,21 @@ public final class Eic {
        * momentum in GeV
        * </pre>
        *
-       * <code>optional .proio.model.eic.XYZD p = 5;</code>
+       * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
        */
-      public Builder mergeP(proio.model.Eic.XYZD value) {
-        if (pBuilder_ == null) {
+      public Builder mergePDouble(proio.model.Eic.XYZD value) {
+        if (pDoubleBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010) &&
-              p_ != null &&
-              p_ != proio.model.Eic.XYZD.getDefaultInstance()) {
-            p_ =
-              proio.model.Eic.XYZD.newBuilder(p_).mergeFrom(value).buildPartial();
+              pDouble_ != null &&
+              pDouble_ != proio.model.Eic.XYZD.getDefaultInstance()) {
+            pDouble_ =
+              proio.model.Eic.XYZD.newBuilder(pDouble_).mergeFrom(value).buildPartial();
           } else {
-            p_ = value;
+            pDouble_ = value;
           }
           onChanged();
         } else {
-          pBuilder_.mergeFrom(value);
+          pDoubleBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000010;
         return this;
@@ -1612,14 +1730,14 @@ public final class Eic {
        * momentum in GeV
        * </pre>
        *
-       * <code>optional .proio.model.eic.XYZD p = 5;</code>
+       * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
        */
-      public Builder clearP() {
-        if (pBuilder_ == null) {
-          p_ = null;
+      public Builder clearPDouble() {
+        if (pDoubleBuilder_ == null) {
+          pDouble_ = null;
           onChanged();
         } else {
-          pBuilder_.clear();
+          pDoubleBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
@@ -1629,26 +1747,26 @@ public final class Eic {
        * momentum in GeV
        * </pre>
        *
-       * <code>optional .proio.model.eic.XYZD p = 5;</code>
+       * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
        */
-      public proio.model.Eic.XYZD.Builder getPBuilder() {
+      public proio.model.Eic.XYZD.Builder getPDoubleBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
-        return getPFieldBuilder().getBuilder();
+        return getPDoubleFieldBuilder().getBuilder();
       }
       /**
        * <pre>
        * momentum in GeV
        * </pre>
        *
-       * <code>optional .proio.model.eic.XYZD p = 5;</code>
+       * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
        */
-      public proio.model.Eic.XYZDOrBuilder getPOrBuilder() {
-        if (pBuilder_ != null) {
-          return pBuilder_.getMessageOrBuilder();
+      public proio.model.Eic.XYZDOrBuilder getPDoubleOrBuilder() {
+        if (pDoubleBuilder_ != null) {
+          return pDoubleBuilder_.getMessageOrBuilder();
         } else {
-          return p_ == null ?
-              proio.model.Eic.XYZD.getDefaultInstance() : p_;
+          return pDouble_ == null ?
+              proio.model.Eic.XYZD.getDefaultInstance() : pDouble_;
         }
       }
       /**
@@ -1656,14 +1774,132 @@ public final class Eic {
        * momentum in GeV
        * </pre>
        *
-       * <code>optional .proio.model.eic.XYZD p = 5;</code>
+       * <code>optional .proio.model.eic.XYZD p_double = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           proio.model.Eic.XYZD, proio.model.Eic.XYZD.Builder, proio.model.Eic.XYZDOrBuilder> 
+          getPDoubleFieldBuilder() {
+        if (pDoubleBuilder_ == null) {
+          pDoubleBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              proio.model.Eic.XYZD, proio.model.Eic.XYZD.Builder, proio.model.Eic.XYZDOrBuilder>(
+                  getPDouble(),
+                  getParentForChildren(),
+                  isClean());
+          pDouble_ = null;
+        }
+        return pDoubleBuilder_;
+      }
+
+      private proio.model.Eic.XYZF p_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proio.model.Eic.XYZF, proio.model.Eic.XYZF.Builder, proio.model.Eic.XYZFOrBuilder> pBuilder_;
+      /**
+       * <code>optional .proio.model.eic.XYZF p = 9;</code>
+       */
+      public boolean hasP() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .proio.model.eic.XYZF p = 9;</code>
+       */
+      public proio.model.Eic.XYZF getP() {
+        if (pBuilder_ == null) {
+          return p_ == null ? proio.model.Eic.XYZF.getDefaultInstance() : p_;
+        } else {
+          return pBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .proio.model.eic.XYZF p = 9;</code>
+       */
+      public Builder setP(proio.model.Eic.XYZF value) {
+        if (pBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          p_ = value;
+          onChanged();
+        } else {
+          pBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .proio.model.eic.XYZF p = 9;</code>
+       */
+      public Builder setP(
+          proio.model.Eic.XYZF.Builder builderForValue) {
+        if (pBuilder_ == null) {
+          p_ = builderForValue.build();
+          onChanged();
+        } else {
+          pBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .proio.model.eic.XYZF p = 9;</code>
+       */
+      public Builder mergeP(proio.model.Eic.XYZF value) {
+        if (pBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              p_ != null &&
+              p_ != proio.model.Eic.XYZF.getDefaultInstance()) {
+            p_ =
+              proio.model.Eic.XYZF.newBuilder(p_).mergeFrom(value).buildPartial();
+          } else {
+            p_ = value;
+          }
+          onChanged();
+        } else {
+          pBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .proio.model.eic.XYZF p = 9;</code>
+       */
+      public Builder clearP() {
+        if (pBuilder_ == null) {
+          p_ = null;
+          onChanged();
+        } else {
+          pBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .proio.model.eic.XYZF p = 9;</code>
+       */
+      public proio.model.Eic.XYZF.Builder getPBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getPFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .proio.model.eic.XYZF p = 9;</code>
+       */
+      public proio.model.Eic.XYZFOrBuilder getPOrBuilder() {
+        if (pBuilder_ != null) {
+          return pBuilder_.getMessageOrBuilder();
+        } else {
+          return p_ == null ?
+              proio.model.Eic.XYZF.getDefaultInstance() : p_;
+        }
+      }
+      /**
+       * <code>optional .proio.model.eic.XYZF p = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          proio.model.Eic.XYZF, proio.model.Eic.XYZF.Builder, proio.model.Eic.XYZFOrBuilder> 
           getPFieldBuilder() {
         if (pBuilder_ == null) {
           pBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              proio.model.Eic.XYZD, proio.model.Eic.XYZD.Builder, proio.model.Eic.XYZDOrBuilder>(
+              proio.model.Eic.XYZF, proio.model.Eic.XYZF.Builder, proio.model.Eic.XYZFOrBuilder>(
                   getP(),
                   getParentForChildren(),
                   isClean());
@@ -1672,37 +1908,37 @@ public final class Eic {
         return pBuilder_;
       }
 
-      private double mass_ ;
+      private double massDouble_ ;
       /**
        * <pre>
        * mass in GeV
        * </pre>
        *
-       * <code>optional double mass = 6;</code>
+       * <code>optional double mass_double = 6;</code>
        */
-      public boolean hasMass() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+      public boolean hasMassDouble() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <pre>
        * mass in GeV
        * </pre>
        *
-       * <code>optional double mass = 6;</code>
+       * <code>optional double mass_double = 6;</code>
        */
-      public double getMass() {
-        return mass_;
+      public double getMassDouble() {
+        return massDouble_;
       }
       /**
        * <pre>
        * mass in GeV
        * </pre>
        *
-       * <code>optional double mass = 6;</code>
+       * <code>optional double mass_double = 6;</code>
        */
-      public Builder setMass(double value) {
-        bitField0_ |= 0x00000020;
-        mass_ = value;
+      public Builder setMassDouble(double value) {
+        bitField0_ |= 0x00000040;
+        massDouble_ = value;
         onChanged();
         return this;
       }
@@ -1711,11 +1947,43 @@ public final class Eic {
        * mass in GeV
        * </pre>
        *
-       * <code>optional double mass = 6;</code>
+       * <code>optional double mass_double = 6;</code>
+       */
+      public Builder clearMassDouble() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        massDouble_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private float mass_ ;
+      /**
+       * <code>optional float mass = 10;</code>
+       */
+      public boolean hasMass() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional float mass = 10;</code>
+       */
+      public float getMass() {
+        return mass_;
+      }
+      /**
+       * <code>optional float mass = 10;</code>
+       */
+      public Builder setMass(float value) {
+        bitField0_ |= 0x00000080;
+        mass_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float mass = 10;</code>
        */
       public Builder clearMass() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        mass_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        mass_ = 0F;
         onChanged();
         return this;
       }
@@ -1729,7 +1997,7 @@ public final class Eic {
        * <code>optional float charge = 7;</code>
        */
       public boolean hasCharge() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <pre>
@@ -1749,7 +2017,7 @@ public final class Eic {
        * <code>optional float charge = 7;</code>
        */
       public Builder setCharge(float value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000100;
         charge_ = value;
         onChanged();
         return this;
@@ -1762,7 +2030,7 @@ public final class Eic {
        * <code>optional float charge = 7;</code>
        */
       public Builder clearCharge() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000100);
         charge_ = 0F;
         onChanged();
         return this;
@@ -1775,7 +2043,7 @@ public final class Eic {
        * <code>optional .proio.model.eic.XYZF spin = 8;</code>
        */
       public boolean hasSpin() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional .proio.model.eic.XYZF spin = 8;</code>
@@ -1800,7 +2068,7 @@ public final class Eic {
         } else {
           spinBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000200;
         return this;
       }
       /**
@@ -1814,7 +2082,7 @@ public final class Eic {
         } else {
           spinBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000200;
         return this;
       }
       /**
@@ -1822,7 +2090,7 @@ public final class Eic {
        */
       public Builder mergeSpin(proio.model.Eic.XYZF value) {
         if (spinBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+          if (((bitField0_ & 0x00000200) == 0x00000200) &&
               spin_ != null &&
               spin_ != proio.model.Eic.XYZF.getDefaultInstance()) {
             spin_ =
@@ -1834,7 +2102,7 @@ public final class Eic {
         } else {
           spinBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000200;
         return this;
       }
       /**
@@ -1847,14 +2115,14 @@ public final class Eic {
         } else {
           spinBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
       /**
        * <code>optional .proio.model.eic.XYZF spin = 8;</code>
        */
       public proio.model.Eic.XYZF.Builder getSpinBuilder() {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000200;
         onChanged();
         return getSpinFieldBuilder().getBuilder();
       }
@@ -1885,13 +2153,11 @@ public final class Eic {
         }
         return spinBuilder_;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -1913,7 +2179,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<Particle>
         PARSER = new com.google.protobuf.AbstractParser<Particle>() {
-      @java.lang.Override
       public Particle parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1931,7 +2196,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.Particle getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -2089,6 +2353,13 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 8: {
               bitField0_ |= 0x00000001;
               volumeid_ = input.readUInt64();
@@ -2130,13 +2401,6 @@ public final class Eic {
               particle_ = input.readUInt64();
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2154,7 +2418,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_SimHit_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_SimHit_fieldAccessorTable
@@ -2303,7 +2566,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -2313,7 +2575,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2334,7 +2595,6 @@ public final class Eic {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -2512,7 +2772,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -2520,7 +2779,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.SimHit prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -2544,7 +2802,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_SimHit_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_SimHit_fieldAccessorTable
@@ -2569,7 +2826,6 @@ public final class Eic {
           getGlobalpostposFieldBuilder();
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         volumeid_ = 0L;
@@ -2593,18 +2849,15 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_SimHit_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.SimHit getDefaultInstanceForType() {
         return proio.model.Eic.SimHit.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.SimHit build() {
         proio.model.Eic.SimHit result = buildPartial();
         if (!result.isInitialized()) {
@@ -2613,7 +2866,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.SimHit buildPartial() {
         proio.model.Eic.SimHit result = new proio.model.Eic.SimHit(this);
         int from_bitField0_ = bitField0_;
@@ -2651,39 +2903,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.SimHit) {
           return mergeFrom((proio.model.Eic.SimHit)other);
@@ -2715,12 +2960,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3199,13 +3442,11 @@ public final class Eic {
         onChanged();
         return this;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -3227,7 +3468,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<SimHit>
         PARSER = new com.google.protobuf.AbstractParser<SimHit>() {
-      @java.lang.Override
       public SimHit parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3245,7 +3485,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.SimHit getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -3405,6 +3644,13 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 13: {
               bitField0_ |= 0x00000001;
               mean_ = input.readFloat();
@@ -3445,13 +3691,6 @@ public final class Eic {
               input.popLimit(limit);
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3475,7 +3714,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_EnergyDep_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_EnergyDep_fieldAccessorTable
@@ -3623,7 +3861,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -3633,7 +3870,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3651,7 +3887,6 @@ public final class Eic {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -3816,7 +4051,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -3824,7 +4058,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.EnergyDep prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -3848,7 +4081,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_EnergyDep_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_EnergyDep_fieldAccessorTable
@@ -3872,7 +4104,6 @@ public final class Eic {
           getPosFieldBuilder();
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         mean_ = 0F;
@@ -3890,18 +4121,15 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_EnergyDep_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.EnergyDep getDefaultInstanceForType() {
         return proio.model.Eic.EnergyDep.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.EnergyDep build() {
         proio.model.Eic.EnergyDep result = buildPartial();
         if (!result.isInitialized()) {
@@ -3910,7 +4138,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.EnergyDep buildPartial() {
         proio.model.Eic.EnergyDep result = new proio.model.Eic.EnergyDep(this);
         int from_bitField0_ = bitField0_;
@@ -3942,39 +4169,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.EnergyDep) {
           return mergeFrom((proio.model.Eic.EnergyDep)other);
@@ -4033,12 +4253,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4566,13 +4784,11 @@ public final class Eic {
         onChanged();
         return this;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -4594,7 +4810,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<EnergyDep>
         PARSER = new com.google.protobuf.AbstractParser<EnergyDep>() {
-      @java.lang.Override
       public EnergyDep parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4612,7 +4827,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.EnergyDep getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -4701,6 +4915,13 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
                 segment_ = new java.util.ArrayList<proio.model.Eic.TrackSegment>();
@@ -4731,13 +4952,6 @@ public final class Eic {
               input.popLimit(limit);
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4761,7 +4975,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_Track_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_Track_fieldAccessorTable
@@ -4827,7 +5040,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -4837,7 +5049,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       for (int i = 0; i < segment_.size(); i++) {
@@ -4849,7 +5060,6 @@ public final class Eic {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -4982,7 +5192,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -4990,7 +5199,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.Track prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -5014,7 +5222,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_Track_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_Track_fieldAccessorTable
@@ -5038,7 +5245,6 @@ public final class Eic {
           getSegmentFieldBuilder();
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         if (segmentBuilder_ == null) {
@@ -5052,18 +5258,15 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_Track_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.Track getDefaultInstanceForType() {
         return proio.model.Eic.Track.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.Track build() {
         proio.model.Eic.Track result = buildPartial();
         if (!result.isInitialized()) {
@@ -5072,7 +5275,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.Track buildPartial() {
         proio.model.Eic.Track result = new proio.model.Eic.Track(this);
         int from_bitField0_ = bitField0_;
@@ -5094,39 +5296,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.Track) {
           return mergeFrom((proio.model.Eic.Track)other);
@@ -5179,12 +5374,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5509,13 +5702,11 @@ public final class Eic {
         onChanged();
         return this;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -5537,7 +5728,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<Track>
         PARSER = new com.google.protobuf.AbstractParser<Track>() {
-      @java.lang.Override
       public Track parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5555,7 +5745,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.Track getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -5739,6 +5928,13 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 10: {
               proio.model.Eic.XYZTD.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -5815,13 +6011,6 @@ public final class Eic {
               length_ = input.readFloat();
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -5848,7 +6037,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_TrackSegment_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_TrackSegment_fieldAccessorTable
@@ -6056,7 +6244,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -6066,7 +6253,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -6096,7 +6282,6 @@ public final class Eic {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -6305,7 +6490,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -6313,7 +6497,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.TrackSegment prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -6337,7 +6520,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_TrackSegment_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_TrackSegment_fieldAccessorTable
@@ -6366,7 +6548,6 @@ public final class Eic {
           getCurvaturenoiseFieldBuilder();
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         if (vertexBuilder_ == null) {
@@ -6412,18 +6593,15 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_TrackSegment_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.TrackSegment getDefaultInstanceForType() {
         return proio.model.Eic.TrackSegment.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.TrackSegment build() {
         proio.model.Eic.TrackSegment result = buildPartial();
         if (!result.isInitialized()) {
@@ -6432,7 +6610,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.TrackSegment buildPartial() {
         proio.model.Eic.TrackSegment result = new proio.model.Eic.TrackSegment(this);
         int from_bitField0_ = bitField0_;
@@ -6501,39 +6678,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.TrackSegment) {
           return mergeFrom((proio.model.Eic.TrackSegment)other);
@@ -6643,12 +6813,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -7805,13 +7973,11 @@ public final class Eic {
         onChanged();
         return this;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -7833,7 +7999,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<TrackSegment>
         PARSER = new com.google.protobuf.AbstractParser<TrackSegment>() {
-      @java.lang.Override
       public TrackSegment parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -7851,7 +8016,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.TrackSegment getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -8016,6 +8180,13 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 10: {
               proio.model.Eic.XYZTD.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -8043,13 +8214,6 @@ public final class Eic {
               weightmod_ = input.readFloat();
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -8070,7 +8234,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_ObservedPos_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_ObservedPos_fieldAccessorTable
@@ -8214,7 +8377,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -8224,7 +8386,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -8239,7 +8400,6 @@ public final class Eic {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -8386,7 +8546,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -8394,7 +8553,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.ObservedPos prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -8422,7 +8580,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_ObservedPos_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_ObservedPos_fieldAccessorTable
@@ -8447,7 +8604,6 @@ public final class Eic {
           getNoiseFieldBuilder();
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         if (meanBuilder_ == null) {
@@ -8467,18 +8623,15 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_ObservedPos_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.ObservedPos getDefaultInstanceForType() {
         return proio.model.Eic.ObservedPos.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.ObservedPos build() {
         proio.model.Eic.ObservedPos result = buildPartial();
         if (!result.isInitialized()) {
@@ -8487,7 +8640,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.ObservedPos buildPartial() {
         proio.model.Eic.ObservedPos result = new proio.model.Eic.ObservedPos(this);
         int from_bitField0_ = bitField0_;
@@ -8518,39 +8670,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.ObservedPos) {
           return mergeFrom((proio.model.Eic.ObservedPos)other);
@@ -8599,12 +8744,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -9207,13 +9350,11 @@ public final class Eic {
         onChanged();
         return this;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -9235,7 +9376,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<ObservedPos>
         PARSER = new com.google.protobuf.AbstractParser<ObservedPos>() {
-      @java.lang.Override
       public ObservedPos parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -9253,7 +9393,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.ObservedPos getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -9342,9 +9481,15 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 16: {
               int rawValue = input.readEnum();
-                @SuppressWarnings("deprecation")
               proio.model.Eic.RandVar.Distribution value = proio.model.Eic.RandVar.Distribution.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(2, rawValue);
@@ -9367,13 +9512,6 @@ public final class Eic {
               bitField0_ |= 0x00000002;
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -9391,7 +9529,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_RandVar_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_RandVar_fieldAccessorTable
@@ -9502,7 +9639,6 @@ public final class Eic {
      * <code>optional .proio.model.eic.RandVar.Distribution dist = 2;</code>
      */
     public proio.model.Eic.RandVar.Distribution getDist() {
-      @SuppressWarnings("deprecation")
       proio.model.Eic.RandVar.Distribution result = proio.model.Eic.RandVar.Distribution.valueOf(dist_);
       return result == null ? proio.model.Eic.RandVar.Distribution.NORMAL : result;
     }
@@ -9541,7 +9677,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -9551,7 +9686,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -9563,7 +9697,6 @@ public final class Eic {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -9696,7 +9829,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -9704,7 +9836,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.RandVar prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -9732,7 +9863,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_RandVar_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_RandVar_fieldAccessorTable
@@ -9756,7 +9886,6 @@ public final class Eic {
           getSigmaFieldBuilder();
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         dist_ = 0;
@@ -9770,18 +9899,15 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_RandVar_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.RandVar getDefaultInstanceForType() {
         return proio.model.Eic.RandVar.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.RandVar build() {
         proio.model.Eic.RandVar result = buildPartial();
         if (!result.isInitialized()) {
@@ -9790,7 +9916,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.RandVar buildPartial() {
         proio.model.Eic.RandVar result = new proio.model.Eic.RandVar(this);
         int from_bitField0_ = bitField0_;
@@ -9812,39 +9937,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.RandVar) {
           return mergeFrom((proio.model.Eic.RandVar)other);
@@ -9867,12 +9985,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -9903,7 +10019,6 @@ public final class Eic {
        * <code>optional .proio.model.eic.RandVar.Distribution dist = 2;</code>
        */
       public proio.model.Eic.RandVar.Distribution getDist() {
-        @SuppressWarnings("deprecation")
         proio.model.Eic.RandVar.Distribution result = proio.model.Eic.RandVar.Distribution.valueOf(dist_);
         return result == null ? proio.model.Eic.RandVar.Distribution.NORMAL : result;
       }
@@ -10082,13 +10197,11 @@ public final class Eic {
         }
         return sigmaBuilder_;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -10110,7 +10223,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<RandVar>
         PARSER = new com.google.protobuf.AbstractParser<RandVar>() {
-      @java.lang.Override
       public RandVar parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -10128,7 +10240,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.RandVar getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -10218,6 +10329,13 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 9: {
               bitField0_ |= 0x00000001;
               x_ = input.readDouble();
@@ -10238,13 +10356,6 @@ public final class Eic {
               t_ = input.readDouble();
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -10262,7 +10373,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_XYZTD_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_XYZTD_fieldAccessorTable
@@ -10332,7 +10442,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -10342,7 +10451,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -10360,7 +10468,6 @@ public final class Eic {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -10532,7 +10639,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -10540,7 +10646,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.XYZTD prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -10564,7 +10669,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_XYZTD_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_XYZTD_fieldAccessorTable
@@ -10587,7 +10691,6 @@ public final class Eic {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         x_ = 0D;
@@ -10601,18 +10704,15 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_XYZTD_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZTD getDefaultInstanceForType() {
         return proio.model.Eic.XYZTD.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZTD build() {
         proio.model.Eic.XYZTD result = buildPartial();
         if (!result.isInitialized()) {
@@ -10621,7 +10721,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZTD buildPartial() {
         proio.model.Eic.XYZTD result = new proio.model.Eic.XYZTD(this);
         int from_bitField0_ = bitField0_;
@@ -10647,39 +10746,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.XYZTD) {
           return mergeFrom((proio.model.Eic.XYZTD)other);
@@ -10708,12 +10800,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -10860,13 +10950,11 @@ public final class Eic {
         onChanged();
         return this;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -10888,7 +10976,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<XYZTD>
         PARSER = new com.google.protobuf.AbstractParser<XYZTD>() {
-      @java.lang.Override
       public XYZTD parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -10906,7 +10993,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.XYZTD getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -10996,6 +11082,13 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 13: {
               bitField0_ |= 0x00000001;
               x_ = input.readFloat();
@@ -11016,13 +11109,6 @@ public final class Eic {
               t_ = input.readFloat();
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -11040,7 +11126,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_XYZTF_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_XYZTF_fieldAccessorTable
@@ -11110,7 +11195,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -11120,7 +11204,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -11138,7 +11221,6 @@ public final class Eic {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -11310,7 +11392,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -11318,7 +11399,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.XYZTF prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -11342,7 +11422,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_XYZTF_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_XYZTF_fieldAccessorTable
@@ -11365,7 +11444,6 @@ public final class Eic {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         x_ = 0F;
@@ -11379,18 +11457,15 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_XYZTF_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZTF getDefaultInstanceForType() {
         return proio.model.Eic.XYZTF.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZTF build() {
         proio.model.Eic.XYZTF result = buildPartial();
         if (!result.isInitialized()) {
@@ -11399,7 +11474,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZTF buildPartial() {
         proio.model.Eic.XYZTF result = new proio.model.Eic.XYZTF(this);
         int from_bitField0_ = bitField0_;
@@ -11425,39 +11499,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.XYZTF) {
           return mergeFrom((proio.model.Eic.XYZTF)other);
@@ -11486,12 +11553,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -11638,13 +11703,11 @@ public final class Eic {
         onChanged();
         return this;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -11666,7 +11729,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<XYZTF>
         PARSER = new com.google.protobuf.AbstractParser<XYZTF>() {
-      @java.lang.Override
       public XYZTF parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -11684,7 +11746,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.XYZTF getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -11764,6 +11825,13 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 9: {
               bitField0_ |= 0x00000001;
               x_ = input.readDouble();
@@ -11777,13 +11845,6 @@ public final class Eic {
             case 25: {
               bitField0_ |= 0x00000004;
               z_ = input.readDouble();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
               break;
             }
           }
@@ -11803,7 +11864,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_XYZD_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_XYZD_fieldAccessorTable
@@ -11858,7 +11918,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -11868,7 +11927,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -11883,7 +11941,6 @@ public final class Eic {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -12039,7 +12096,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -12047,7 +12103,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.XYZD prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -12071,7 +12126,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_XYZD_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_XYZD_fieldAccessorTable
@@ -12094,7 +12148,6 @@ public final class Eic {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         x_ = 0D;
@@ -12106,18 +12159,15 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_XYZD_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZD getDefaultInstanceForType() {
         return proio.model.Eic.XYZD.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZD build() {
         proio.model.Eic.XYZD result = buildPartial();
         if (!result.isInitialized()) {
@@ -12126,7 +12176,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZD buildPartial() {
         proio.model.Eic.XYZD result = new proio.model.Eic.XYZD(this);
         int from_bitField0_ = bitField0_;
@@ -12148,39 +12197,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.XYZD) {
           return mergeFrom((proio.model.Eic.XYZD)other);
@@ -12206,12 +12248,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -12326,13 +12366,11 @@ public final class Eic {
         onChanged();
         return this;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -12354,7 +12392,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<XYZD>
         PARSER = new com.google.protobuf.AbstractParser<XYZD>() {
-      @java.lang.Override
       public XYZD parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -12372,7 +12409,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.XYZD getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -12452,6 +12488,13 @@ public final class Eic {
             case 0:
               done = true;
               break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
             case 13: {
               bitField0_ |= 0x00000001;
               x_ = input.readFloat();
@@ -12465,13 +12508,6 @@ public final class Eic {
             case 29: {
               bitField0_ |= 0x00000004;
               z_ = input.readFloat();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
               break;
             }
           }
@@ -12491,7 +12527,6 @@ public final class Eic {
       return proio.model.Eic.internal_static_proio_model_eic_XYZF_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return proio.model.Eic.internal_static_proio_model_eic_XYZF_fieldAccessorTable
@@ -12546,7 +12581,6 @@ public final class Eic {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -12556,7 +12590,6 @@ public final class Eic {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -12571,7 +12604,6 @@ public final class Eic {
       unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -12727,7 +12759,6 @@ public final class Eic {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -12735,7 +12766,6 @@ public final class Eic {
     public static Builder newBuilder(proio.model.Eic.XYZF prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -12759,7 +12789,6 @@ public final class Eic {
         return proio.model.Eic.internal_static_proio_model_eic_XYZF_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return proio.model.Eic.internal_static_proio_model_eic_XYZF_fieldAccessorTable
@@ -12782,7 +12811,6 @@ public final class Eic {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         x_ = 0F;
@@ -12794,18 +12822,15 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return proio.model.Eic.internal_static_proio_model_eic_XYZF_descriptor;
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZF getDefaultInstanceForType() {
         return proio.model.Eic.XYZF.getDefaultInstance();
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZF build() {
         proio.model.Eic.XYZF result = buildPartial();
         if (!result.isInitialized()) {
@@ -12814,7 +12839,6 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public proio.model.Eic.XYZF buildPartial() {
         proio.model.Eic.XYZF result = new proio.model.Eic.XYZF(this);
         int from_bitField0_ = bitField0_;
@@ -12836,39 +12860,32 @@ public final class Eic {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof proio.model.Eic.XYZF) {
           return mergeFrom((proio.model.Eic.XYZF)other);
@@ -12894,12 +12911,10 @@ public final class Eic {
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -13014,13 +13029,11 @@ public final class Eic {
         onChanged();
         return this;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -13042,7 +13055,6 @@ public final class Eic {
 
     @java.lang.Deprecated public static final com.google.protobuf.Parser<XYZF>
         PARSER = new com.google.protobuf.AbstractParser<XYZF>() {
-      @java.lang.Override
       public XYZF parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -13060,7 +13072,6 @@ public final class Eic {
       return PARSER;
     }
 
-    @java.lang.Override
     public proio.model.Eic.XYZF getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -13132,40 +13143,42 @@ public final class Eic {
   static {
     java.lang.String[] descriptorData = {
       "\n\025proio/model/eic.proto\022\017proio.model.eic" +
-      "\"\303\001\n\010Particle\022\016\n\006parent\030\001 \003(\004\022\r\n\005child\030\002" +
+      "\"\201\002\n\010Particle\022\016\n\006parent\030\001 \003(\004\022\r\n\005child\030\002" +
       " \003(\004\022\013\n\003pdg\030\003 \001(\021\022&\n\006vertex\030\004 \001(\0132\026.proi" +
-      "o.model.eic.XYZTD\022 \n\001p\030\005 \001(\0132\025.proio.mod" +
-      "el.eic.XYZD\022\014\n\004mass\030\006 \001(\001\022\016\n\006charge\030\007 \001(" +
-      "\002\022#\n\004spin\030\010 \001(\0132\025.proio.model.eic.XYZF\"\227" +
-      "\001\n\006SimHit\022\020\n\010volumeid\030\001 \001(\004\022,\n\014globalpre" +
-      "pos\030\002 \001(\0132\026.proio.model.eic.XYZTD\022-\n\rglo" +
-      "balpostpos\030\003 \001(\0132\026.proio.model.eic.XYZTD" +
-      "\022\014\n\004edep\030\004 \001(\002\022\020\n\010particle\030\005 \001(\004\"c\n\tEner" +
-      "gyDep\022\014\n\004mean\030\001 \001(\002\022\r\n\005noise\030\002 \001(\002\022)\n\003po" +
-      "s\030\003 \003(\0132\034.proio.model.eic.ObservedPos\022\016\n" +
-      "\006source\030\004 \003(\004\"L\n\005Track\022.\n\007segment\030\001 \003(\0132" +
-      "\035.proio.model.eic.TrackSegment\022\023\n\013observ" +
-      "ation\030\002 \003(\004\"\265\002\n\014TrackSegment\022&\n\006vertex\030\001" +
-      " \001(\0132\026.proio.model.eic.XYZTD\022-\n\013vertexno" +
-      "ise\030\002 \003(\0132\030.proio.model.eic.RandVar\022\"\n\003p" +
-      "oq\030\003 \001(\0132\025.proio.model.eic.XYZD\022*\n\010poqno" +
-      "ise\030\004 \003(\0132\030.proio.model.eic.RandVar\022(\n\tc" +
-      "urvature\030\005 \001(\0132\025.proio.model.eic.XYZD\0220\n" +
-      "\016curvaturenoise\030\006 \003(\0132\030.proio.model.eic." +
-      "RandVar\022\022\n\nchargesign\030\007 \001(\002\022\016\n\006length\030\010 " +
-      "\001(\002\"o\n\013ObservedPos\022$\n\004mean\030\001 \001(\0132\026.proio" +
-      ".model.eic.XYZTD\022\'\n\005noise\030\002 \003(\0132\030.proio." +
-      "model.eic.RandVar\022\021\n\tweightmod\030\003 \001(\002\"\216\001\n" +
-      "\007RandVar\0223\n\004dist\030\002 \001(\0162%.proio.model.eic" +
-      ".RandVar.Distribution\022%\n\005sigma\030\003 \001(\0132\026.p" +
-      "roio.model.eic.XYZTF\"\'\n\014Distribution\022\n\n\006" +
-      "NORMAL\020\000\022\013\n\007UNIFORM\020\001\"3\n\005XYZTD\022\t\n\001x\030\001 \001(" +
-      "\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\022\t\n\001t\030\004 \001(\001\"3\n\005XY" +
-      "ZTF\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\t\n\001" +
-      "t\030\004 \001(\002\"\'\n\004XYZD\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n" +
-      "\001z\030\003 \001(\001\"\'\n\004XYZF\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t" +
-      "\n\001z\030\003 \001(\002BE\n\013proio.modelB\003EicZ1github.co" +
-      "m/decibelcooper/proio/go-proio/model/eic"
+      "o.model.eic.XYZTD\022\'\n\010p_double\030\005 \001(\0132\025.pr" +
+      "oio.model.eic.XYZD\022 \n\001p\030\t \001(\0132\025.proio.mo" +
+      "del.eic.XYZF\022\023\n\013mass_double\030\006 \001(\001\022\014\n\004mas" +
+      "s\030\n \001(\002\022\016\n\006charge\030\007 \001(\002\022#\n\004spin\030\010 \001(\0132\025." +
+      "proio.model.eic.XYZF\"\227\001\n\006SimHit\022\020\n\010volum" +
+      "eid\030\001 \001(\004\022,\n\014globalprepos\030\002 \001(\0132\026.proio." +
+      "model.eic.XYZTD\022-\n\rglobalpostpos\030\003 \001(\0132\026" +
+      ".proio.model.eic.XYZTD\022\014\n\004edep\030\004 \001(\002\022\020\n\010" +
+      "particle\030\005 \001(\004\"c\n\tEnergyDep\022\014\n\004mean\030\001 \001(" +
+      "\002\022\r\n\005noise\030\002 \001(\002\022)\n\003pos\030\003 \003(\0132\034.proio.mo" +
+      "del.eic.ObservedPos\022\016\n\006source\030\004 \003(\004\"L\n\005T" +
+      "rack\022.\n\007segment\030\001 \003(\0132\035.proio.model.eic." +
+      "TrackSegment\022\023\n\013observation\030\002 \003(\004\"\265\002\n\014Tr" +
+      "ackSegment\022&\n\006vertex\030\001 \001(\0132\026.proio.model" +
+      ".eic.XYZTD\022-\n\013vertexnoise\030\002 \003(\0132\030.proio." +
+      "model.eic.RandVar\022\"\n\003poq\030\003 \001(\0132\025.proio.m" +
+      "odel.eic.XYZD\022*\n\010poqnoise\030\004 \003(\0132\030.proio." +
+      "model.eic.RandVar\022(\n\tcurvature\030\005 \001(\0132\025.p" +
+      "roio.model.eic.XYZD\0220\n\016curvaturenoise\030\006 " +
+      "\003(\0132\030.proio.model.eic.RandVar\022\022\n\ncharges" +
+      "ign\030\007 \001(\002\022\016\n\006length\030\010 \001(\002\"o\n\013ObservedPos" +
+      "\022$\n\004mean\030\001 \001(\0132\026.proio.model.eic.XYZTD\022\'" +
+      "\n\005noise\030\002 \003(\0132\030.proio.model.eic.RandVar\022" +
+      "\021\n\tweightmod\030\003 \001(\002\"\216\001\n\007RandVar\0223\n\004dist\030\002" +
+      " \001(\0162%.proio.model.eic.RandVar.Distribut" +
+      "ion\022%\n\005sigma\030\003 \001(\0132\026.proio.model.eic.XYZ" +
+      "TF\"\'\n\014Distribution\022\n\n\006NORMAL\020\000\022\013\n\007UNIFOR" +
+      "M\020\001\"3\n\005XYZTD\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030" +
+      "\003 \001(\001\022\t\n\001t\030\004 \001(\001\"3\n\005XYZTF\022\t\n\001x\030\001 \001(\002\022\t\n\001" +
+      "y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\t\n\001t\030\004 \001(\002\"\'\n\004XYZD\022\t\n" +
+      "\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\"\'\n\004XYZF\022\t" +
+      "\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002BE\n\013proio" +
+      ".modelB\003EicZ1github.com/decibelcooper/pr" +
+      "oio/go-proio/model/eic"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -13184,7 +13197,7 @@ public final class Eic {
     internal_static_proio_model_eic_Particle_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proio_model_eic_Particle_descriptor,
-        new java.lang.String[] { "Parent", "Child", "Pdg", "Vertex", "P", "Mass", "Charge", "Spin", });
+        new java.lang.String[] { "Parent", "Child", "Pdg", "Vertex", "PDouble", "P", "MassDouble", "Mass", "Charge", "Spin", });
     internal_static_proio_model_eic_SimHit_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_proio_model_eic_SimHit_fieldAccessorTable = new
