@@ -25,8 +25,11 @@ message Particle {
     optional sint32 spin = 9;
     // status code
     optional sint32 status = 10;
-    // barcode
+    // barcode used for post-generation operations (pileup event number etc)
     optional sint32 barcode= 11;
+    // original position of the particle in the MC generator 
+    optional uint32 id = 12;
+
 }
 
 // This message is for general Monte Carlo generators.
