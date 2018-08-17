@@ -4,9 +4,16 @@
   <groupId>proio</groupId>
   <artifactId>proio</artifactId>
   <packaging>jar</packaging>
-  <version>0.2.0</version>
+  <version>0.2</version>
   <name>proio</name>
   <url>http://github.com/decibelcooper/proio</url>
+  <licenses>
+    <license>
+      <name>BSD-3-Clause</name>
+      <url>https://github.com/decibelcooper/proio/blob/master/LICENSE</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
