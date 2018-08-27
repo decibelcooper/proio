@@ -31,6 +31,8 @@ message Particle {
     optional uint32 id = 12;
 }
 
+// This message is an optional alternative to `Particle` for minimizing field
+// identifier overhead.
 message PackedParticles {
     // original position in the MC generator
     repeated uint32 id = 1 [packed=true];
@@ -65,6 +67,11 @@ message PackedParticles {
     repeated float energy = 19 [packed=true];
 }
 
+// This message is an optional alternative to `Particle` which uses protobuf
+// variable integers for compression.  This effectively makes the change from
+// floating-point to fixed-point numbers.  Units for these fixed-point numbers
+// are to be specified in metadata as human-readable strings with keys
+// "info:varint_energy", "info:varint_length", "info:varint_time".
 message VarintParticle {
     // ProIO entry identifiers that point to parent Particles
     repeated uint64 parent = 1;
@@ -92,6 +99,8 @@ message VarintParticle {
     optional uint32 id = 12;
 }
 
+// This message combines VarintParticle and PackedParticles for minimal field
+// identifier overhead as well as varint compression.
 message VarintPackedParticles {
     // original position in the MC generator
     repeated uint32 id = 1 [packed=true];
@@ -169,7 +178,7 @@ message Pythia8Parameters {
     optional uint64 id2 = 11;
 }
 
-// Auxiliary message types
+// auxiliary message types
 message XYZTF {
     optional float x = 1;
     optional float y = 2;
