@@ -102,9 +102,9 @@ message VarintPackedParticles {
     // mass in units specified in metadata
     repeated uint64 mass = 4 [packed=true];
     // 3-momentum in units specified in metadata
-    repeated float Px = 5 [packed=true];
-    repeated float Py = 6 [packed=true];
-    repeated float Pz = 7 [packed=true];
+    repeated sint64 Px = 5 [packed=true];
+    repeated sint64 Py = 6 [packed=true];
+    repeated sint64 Pz = 7 [packed=true];
     // ProIO entry identifiers that point to parent Particles
     repeated uint32 parent1 = 8 [packed=true];
     repeated uint32 parent2 = 9 [packed=true];
@@ -122,7 +122,7 @@ message VarintPackedParticles {
     repeated uint64 weight = 17 [packed=true];
     // charge in units of elementary charge / 3
     repeated sint32 charge = 18 [packed=true];
-    // energy in GeV
+    // energy in units specified in metadata
     repeated uint64 energy = 19 [packed=true];
 }
 
