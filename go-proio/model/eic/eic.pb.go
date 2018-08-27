@@ -55,7 +55,7 @@ func (x *RandVar_Distribution) UnmarshalJSON(data []byte) error {
 	return nil
 }
 func (RandVar_Distribution) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{6, 0}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{6, 0}
 }
 
 type Particle struct {
@@ -86,7 +86,7 @@ func (m *Particle) Reset()         { *m = Particle{} }
 func (m *Particle) String() string { return proto.CompactTextString(m) }
 func (*Particle) ProtoMessage()    {}
 func (*Particle) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{0}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{0}
 }
 func (m *Particle) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -207,7 +207,7 @@ func (m *SimHit) Reset()         { *m = SimHit{} }
 func (m *SimHit) String() string { return proto.CompactTextString(m) }
 func (*SimHit) ProtoMessage()    {}
 func (*SimHit) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{1}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{1}
 }
 func (m *SimHit) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -290,7 +290,7 @@ func (m *EnergyDep) Reset()         { *m = EnergyDep{} }
 func (m *EnergyDep) String() string { return proto.CompactTextString(m) }
 func (*EnergyDep) ProtoMessage()    {}
 func (*EnergyDep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{2}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{2}
 }
 func (m *EnergyDep) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -359,7 +359,7 @@ func (m *Track) Reset()         { *m = Track{} }
 func (m *Track) String() string { return proto.CompactTextString(m) }
 func (*Track) ProtoMessage()    {}
 func (*Track) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{3}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{3}
 }
 func (m *Track) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -427,7 +427,7 @@ func (m *TrackSegment) Reset()         { *m = TrackSegment{} }
 func (m *TrackSegment) String() string { return proto.CompactTextString(m) }
 func (*TrackSegment) ProtoMessage()    {}
 func (*TrackSegment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{4}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{4}
 }
 func (m *TrackSegment) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -543,7 +543,7 @@ func (m *ObservedPos) Reset()         { *m = ObservedPos{} }
 func (m *ObservedPos) String() string { return proto.CompactTextString(m) }
 func (*ObservedPos) ProtoMessage()    {}
 func (*ObservedPos) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{5}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{5}
 }
 func (m *ObservedPos) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -607,7 +607,7 @@ func (m *RandVar) Reset()         { *m = RandVar{} }
 func (m *RandVar) String() string { return proto.CompactTextString(m) }
 func (*RandVar) ProtoMessage()    {}
 func (*RandVar) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{6}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{6}
 }
 func (m *RandVar) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -664,7 +664,7 @@ func (m *XYZTD) Reset()         { *m = XYZTD{} }
 func (m *XYZTD) String() string { return proto.CompactTextString(m) }
 func (*XYZTD) ProtoMessage()    {}
 func (*XYZTD) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{7}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{7}
 }
 func (m *XYZTD) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -735,7 +735,7 @@ func (m *XYZTF) Reset()         { *m = XYZTF{} }
 func (m *XYZTF) String() string { return proto.CompactTextString(m) }
 func (*XYZTF) ProtoMessage()    {}
 func (*XYZTF) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{8}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{8}
 }
 func (m *XYZTF) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -805,7 +805,7 @@ func (m *XYZD) Reset()         { *m = XYZD{} }
 func (m *XYZD) String() string { return proto.CompactTextString(m) }
 func (*XYZD) ProtoMessage()    {}
 func (*XYZD) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{9}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{9}
 }
 func (m *XYZD) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -868,7 +868,7 @@ func (m *XYZF) Reset()         { *m = XYZF{} }
 func (m *XYZF) String() string { return proto.CompactTextString(m) }
 func (*XYZF) ProtoMessage()    {}
 func (*XYZF) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eic_b0c1cfa6a8a64341, []int{10}
+	return fileDescriptor_eic_62c13b46b06d9322, []int{10}
 }
 func (m *XYZF) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -3700,9 +3700,9 @@ var (
 	ErrIntOverflowEic   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("proio/model/eic.proto", fileDescriptor_eic_b0c1cfa6a8a64341) }
+func init() { proto.RegisterFile("proio/model/eic.proto", fileDescriptor_eic_62c13b46b06d9322) }
 
-var fileDescriptor_eic_b0c1cfa6a8a64341 = []byte{
+var fileDescriptor_eic_62c13b46b06d9322 = []byte{
 	// 803 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x55, 0xdb, 0x6e, 0xdb, 0x46,
 	0x10, 0xf5, 0x92, 0xd4, 0x6d, 0xa8, 0xba, 0xee, 0xa2, 0x36, 0x88, 0xc2, 0x55, 0x05, 0x16, 0x85,

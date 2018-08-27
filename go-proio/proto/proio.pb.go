@@ -43,7 +43,7 @@ func (x BucketHeader_CompType) String() string {
 	return proto.EnumName(BucketHeader_CompType_name, int32(x))
 }
 func (BucketHeader_CompType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_proio_ffb6be09320688c8, []int{0, 0}
+	return fileDescriptor_proio_d1fe3104f231228c, []int{0, 0}
 }
 
 type BucketHeader_BucketType int32
@@ -66,7 +66,7 @@ func (x BucketHeader_BucketType) String() string {
 	return proto.EnumName(BucketHeader_BucketType_name, int32(x))
 }
 func (BucketHeader_BucketType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_proio_ffb6be09320688c8, []int{0, 1}
+	return fileDescriptor_proio_d1fe3104f231228c, []int{0, 1}
 }
 
 type BucketHeader struct {
@@ -85,7 +85,7 @@ func (m *BucketHeader) Reset()         { *m = BucketHeader{} }
 func (m *BucketHeader) String() string { return proto.CompactTextString(m) }
 func (*BucketHeader) ProtoMessage()    {}
 func (*BucketHeader) Descriptor() ([]byte, []int) {
-	return fileDescriptor_proio_ffb6be09320688c8, []int{0}
+	return fileDescriptor_proio_d1fe3104f231228c, []int{0}
 }
 func (m *BucketHeader) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -167,7 +167,7 @@ func (m *Tag) Reset()         { *m = Tag{} }
 func (m *Tag) String() string { return proto.CompactTextString(m) }
 func (*Tag) ProtoMessage()    {}
 func (*Tag) Descriptor() ([]byte, []int) {
-	return fileDescriptor_proio_ffb6be09320688c8, []int{1}
+	return fileDescriptor_proio_d1fe3104f231228c, []int{1}
 }
 func (m *Tag) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -215,7 +215,7 @@ func (m *Any) Reset()         { *m = Any{} }
 func (m *Any) String() string { return proto.CompactTextString(m) }
 func (*Any) ProtoMessage()    {}
 func (*Any) Descriptor() ([]byte, []int) {
-	return fileDescriptor_proio_ffb6be09320688c8, []int{2}
+	return fileDescriptor_proio_d1fe3104f231228c, []int{2}
 }
 func (m *Any) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -273,7 +273,7 @@ func (m *Event) Reset()         { *m = Event{} }
 func (m *Event) String() string { return proto.CompactTextString(m) }
 func (*Event) ProtoMessage()    {}
 func (*Event) Descriptor() ([]byte, []int) {
-	return fileDescriptor_proio_ffb6be09320688c8, []int{3}
+	return fileDescriptor_proio_d1fe3104f231228c, []int{3}
 }
 func (m *Event) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1760,9 +1760,9 @@ var (
 	ErrIntOverflowProio   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("proio/proto/proio.proto", fileDescriptor_proio_ffb6be09320688c8) }
+func init() { proto.RegisterFile("proio/proto/proio.proto", fileDescriptor_proio_d1fe3104f231228c) }
 
-var fileDescriptor_proio_ffb6be09320688c8 = []byte{
+var fileDescriptor_proio_d1fe3104f231228c = []byte{
 	// 555 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x54, 0xcd, 0x6e, 0xd3, 0x40,
 	0x10, 0x8e, 0xb3, 0x76, 0x7e, 0x26, 0xa1, 0xb2, 0x56, 0x08, 0xac, 0x14, 0xa2, 0xc8, 0xaa, 0xda,
